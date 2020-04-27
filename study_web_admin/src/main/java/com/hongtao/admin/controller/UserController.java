@@ -99,11 +99,13 @@ public class UserController {
     public boolean resetPassword(@RequestParam("idList") List<String> idList)
     {
         String password=passwordEncoder.encode("000000");
+        boolean result=false;
         for (String id:idList)
         {
             service.resetPwd(id, password);
+            result=true;
         }
-        return false;
+        return result;
     }
 
     @RequestMapping(value="delete",method = RequestMethod.DELETE)
