@@ -95,16 +95,16 @@ public class UserController {
     }
 
     //重置密码
-    @RequestMapping(value="resetPwd",method = RequestMethod.PUT)
-    public void resetPwd(@RequestParam("idList") List<String> idList){
+    @RequestMapping(value = "resetPassword",method = RequestMethod.PUT)
+    public boolean resetPassword(@RequestParam("idList") List<String> idList)
+    {
         String password=passwordEncoder.encode("000000");
-        if(idList!=null && idList.size()>0) {
-            for (String id : idList) {
-                service.resetPwd(id, password);
-            }
+        for (String id:idList)
+        {
+            service.resetPwd(id, password);
         }
+        return false;
     }
-
 
     @RequestMapping(value="delete",method = RequestMethod.DELETE)
     public R delete(@RequestParam("idList") List<String> idList){
