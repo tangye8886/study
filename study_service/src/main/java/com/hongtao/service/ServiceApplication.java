@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.ComponentScan;
 
-@ComponentScan(value = "com.hongtao.service")
+//@ComponentScan(value = "com.hongtao.service")
 @MapperScan("com.hongtao.service.dao")
 @EnableEurekaClient
 @SpringBootApplication

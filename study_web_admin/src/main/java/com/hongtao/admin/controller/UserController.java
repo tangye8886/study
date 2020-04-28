@@ -95,7 +95,7 @@ public class UserController {
     }
 
     //重置密码
-    @RequestMapping(value = "resetPassword",method = RequestMethod.PUT)
+    @RequestMapping(value = "resetPassword",method = RequestMethod.GET)
     public boolean resetPassword(@RequestParam("idList") List<String> idList)
     {
         String password=passwordEncoder.encode("000000");
