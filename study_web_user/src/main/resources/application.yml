@@ -7,6 +7,9 @@ spring:
   security:
     basic:
       enabled: false # 启用SpringSecurity的安全配置项
+    key:
+      name: study
+    expiretime: 3600000
 
   #zipkin:
   #    base-url: http://localhost:9411
