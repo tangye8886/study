@@ -4,13 +4,17 @@ server:
 spring:
   application:
     name: study-zuul-user
+  security:
+    key:
+      name: study
+    expiretime: 3600000
 
 eureka:
   instance:
     prefer-ip-address: true
   client:
     service-url:
-      defaultZone: http://172.17.0.2:7001/eureka/
+      defaultZone: http://127.0.0.1:7001/eureka/
 
 
 zuul:
