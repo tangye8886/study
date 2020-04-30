@@ -2,13 +2,12 @@ package com.hongtao.admin.configer;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hongtao.admin.service.UserService;
-import com.hongtao.admin.utils.TokenUtils;
 import com.hongtao.common.entity.AjaxResponse;
 import com.hongtao.common.entity.UserInfo;
+import com.hongtao.common.utils.TokenUtils;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
-
 import javax.annotation.Resource;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -25,8 +24,6 @@ public class SecuritySuccess  extends SavedRequestAwareAuthenticationSuccessHand
     @Resource
     UserService userService;
 
-    @Resource
-    TokenUtils tokenUtils;
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
@@ -37,7 +34,7 @@ public class SecuritySuccess  extends SavedRequestAwareAuthenticationSuccessHand
         Map<String,Object> map=new HashMap<>();
         map.put("userInfo",userInfo);
         try {
-            String token = tokenUtils.makeToken(userInfo.getId(), userInfo.getUsername(),userInfo.getRole());
+            String token = TokenUtils.makeToken(userInfo.getId(), userInfo.getUsername());
             map.put("token",token);
         }catch (Exception e)
         {

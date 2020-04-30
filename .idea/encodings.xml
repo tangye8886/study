@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
-    <file url="file://$PROJECT_DIR$/study_common/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/study_eureka/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/study_fdfs/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/study_service/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/study_web_admin/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/study_web_user/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/study_zuul_admin/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/study_zuul_user/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/study_common" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/study_eureka" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/study_fdfs" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/study_service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/study_web_admin" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/study_web_user" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/study_zuul_admin" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/study_zuul_user" charset="UTF-8" />
   </component>
 </project>

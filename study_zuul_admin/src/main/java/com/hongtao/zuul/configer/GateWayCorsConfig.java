@@ -1,6 +1,5 @@
 package com.hongtao.zuul.configer;
 
-import com.hongtao.zuul.utils.TokenUtils;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
@@ -22,9 +21,5 @@ public class GateWayCorsConfig {
         corsConfiguration.addAllowedMethod("*");
         source.registerCorsConfiguration("/**", corsConfiguration);
         return new CorsFilter(source);
-    }
-    @Bean
-    public TokenUtils getTokenUtils(){
-        return  new TokenUtils();
     }
 }

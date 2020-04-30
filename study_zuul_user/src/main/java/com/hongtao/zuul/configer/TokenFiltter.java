@@ -1,7 +1,7 @@
 package com.hongtao.zuul.configer;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.hongtao.zuul.util.TokenUtils;
+import com.hongtao.common.utils.TokenUtils;
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 import com.netflix.zuul.exception.ZuulException;
@@ -13,6 +13,8 @@ import org.springframework.stereotype.Component;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author tanghongtao
@@ -25,11 +27,8 @@ public class TokenFiltter extends ZuulFilter {
     @Value("${zuul.routes.api-study.serviceId}")
     String name;
 
-
     private static ObjectMapper objectMapper=new ObjectMapper();
 
-    @Resource
-    TokenUtils tokenUtils;
 
     // 指定过滤器类型
     @Override
@@ -48,11 +47,27 @@ public class TokenFiltter extends ZuulFilter {
     public boolean shouldFilter() {
         RequestContext context=RequestContext.getCurrentContext();
         HttpServletRequest request = context.getRequest();
-        if(("/"+name+"/login").equalsIgnoreCase(request.getRequestURI()))
+
+        String header="/"+name+"/";
+        List<String> filterUrl=new ArrayList<String>();
+        filterUrl.add(header+"api/user/order/query");
+        filterUrl.add(header+"api/user/course/redis/querySeeRecord");
+        filterUrl.add(header+"api/user/course/redis/queryUserStudy");
+        filterUrl.add(header+"api/user/course/redis/queryLoveCourse");
+        filterUrl.add(header+"api/user/userInfo/modify");
+        filterUrl.add(header+"api/user/course/redis/delLoveCourse");
+        filterUrl.add(header+"api/user/course/redis/addSeeRecord");
+        //filterUrl.add(header+"api/user/course/comment/query");
+        filterUrl.add(header+"api/user/course/comment/delete");
+
+        for(String url:filterUrl)
         {
-            return false;
+            if(url.equalsIgnoreCase(request.getRequestURI()))
+            {
+                return  true;
+            }
         }
-        return true;
+        return false;
     }
 
     // 过滤器具体执行的操作
@@ -70,7 +85,7 @@ public class TokenFiltter extends ZuulFilter {
                 if(startsWith)
                 {
                     String token=header.substring(7);
-                    Claims claims = tokenUtils.parseToken(token);
+                    Claims claims = TokenUtils.parseToken(token);
                     if(claims.getSubject()!=null) {
                         isLogin=true;
                     }
@@ -87,7 +102,7 @@ public class TokenFiltter extends ZuulFilter {
             context.setSendZuulResponse(false);
             context.setResponseStatusCode(HttpStatus.SC_UNAUTHORIZED);
             try {
-                context.getResponse().getWriter().write(objectMapper.writeValueAsString(tokenUtils.error()));
+                context.getResponse().getWriter().write(objectMapper.writeValueAsString(TokenUtils.error()));
             } catch (IOException e) {
                 e.printStackTrace();
             }

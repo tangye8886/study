@@ -1,6 +1,7 @@
 package com.hongtao.admin.utils;
 
 import com.hongtao.common.entity.UserInfo;
+import com.hongtao.common.utils.TokenUtils;
 
 import javax.annotation.Resource;
 
@@ -21,7 +22,7 @@ public class Result {
         result.setMsg("认证成功");
         result.setCode(200);
         result.setData(userInfo);
-        String token = tokenUtils.makeToken(userInfo.getId(), userInfo.getUsername(), userInfo.getRole());
+        String token = TokenUtils.makeToken(userInfo.getId(), userInfo.getUsername());
         result.setToken(token);
         return result;
     }

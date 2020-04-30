@@ -1,6 +1,6 @@
 package com.hongtao.admin.configer;
 
-import com.hongtao.admin.utils.TokenUtils;
+import com.hongtao.common.utils.TokenUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;

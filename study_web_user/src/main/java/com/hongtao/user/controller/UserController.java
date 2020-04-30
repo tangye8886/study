@@ -2,8 +2,8 @@ package com.hongtao.user.controller;
 
 import com.baomidou.mybatisplus.extension.api.R;
 import com.hongtao.common.entity.UserInfo;
+import com.hongtao.common.utils.TokenUtils;
 import com.hongtao.user.service.UserService;
-import com.hongtao.user.utils.TokenUtils;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 

@@ -12,6 +12,7 @@ import com.hongtao.service.service.CourseService;
 import com.hongtao.service.service.FdfsService;
 import com.hongtao.service.service.VedioService;
 import com.hongtao.service.utils.MyUtils;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -91,7 +92,9 @@ public class VedioController extends ApiController {
         return success(this.vedioService.removeByIds(idList));
     }
 
-    @RequestMapping(value="fileUpload",method = RequestMethod.POST)
+    @RequestMapping(value="fileUpload",method = RequestMethod.POST,
+            produces = {MediaType.APPLICATION_JSON_UTF8_VALUE},
+            consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public String fileUpload(@RequestParam("file") MultipartFile file) {
         return fdfsService.fileUpload(file);
     }
@@ -99,11 +102,6 @@ public class VedioController extends ApiController {
     @RequestMapping(value="fileDelete",method = RequestMethod.DELETE)
     public Integer fileDelete(@RequestParam("path")String path) {
         return fdfsService.deleteFile(path);
-    }
-
-    @RequestMapping(value="getOneVedio",method = RequestMethod.DELETE)
-    public Vedio getOneVedio(@RequestParam("id")String id) {
-        return vedioService.getOneVedio(id);
     }
 
 

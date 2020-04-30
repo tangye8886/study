@@ -2,6 +2,7 @@ package com.hongtao.admin.controller;
 
 
 import com.baomidou.mybatisplus.extension.api.R;
+import com.hongtao.admin.service.FdfsService;
 import com.hongtao.admin.service.VedioService;
 import com.hongtao.common.dto.CourseDTO;
 import com.hongtao.common.dto.VedioDTO;
@@ -22,6 +23,9 @@ public class VedioController {
 
     @Resource
     VedioService vedioService;
+
+    @Resource
+    FdfsService fdfsService;
 
     @RequestMapping(value = "query",method = RequestMethod.POST)
     public Map<String,Object> selectAll(@RequestBody VedioDTO vedioDTO){
@@ -48,11 +52,8 @@ public class VedioController {
 
     //文件上传
     @RequestMapping(value="fileUpload",method = RequestMethod.POST)
-    public String fileUpload(@RequestParam("file") MultipartFile file){
-
-        vedioService.fileUpload(file);
-
-        return "1";
+    public String fileUpload(@RequestPart("file") MultipartFile file){
+        return fdfsService.fileUpload(file);
     }
 
 

@@ -29,21 +29,8 @@ public interface VedioService {
     @RequestMapping(value="api/vedio/modify",method = RequestMethod.PUT)
     public R update(@RequestBody Vedio courseVedio);
 
-
     @RequestMapping(value="api/vedio/delete",method = RequestMethod.DELETE)
     public R delete(@RequestParam("idList") List<String> idList);
-
-    //文件删除
-    @RequestMapping(value="api/vedio/fileDelete",method = RequestMethod.DELETE)
-    public Integer fileDelete(@RequestParam("path") String path);
-
-    //文件上传
-    @RequestMapping(value="api/vedio/fileUpload",method = RequestMethod.POST)
-    public String fileUpload(@RequestParam("file") MultipartFile file);
-
-
-    @RequestMapping(value="api/vedio/getOneVedio",method = RequestMethod.DELETE)
-    public Vedio getOneVedio(@RequestParam("id") String id);
 
     @RequestMapping(value="api/vedio/queryJLByCourse",method = RequestMethod.POST)
     public List<Options> queryJLByCourse(@RequestBody CourseDTO courseDTO);
