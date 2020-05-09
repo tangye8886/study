@@ -14,6 +14,10 @@ spring:
     key:
       name: study
     expiretime: 3600000
+  servlet:
+    multipart:
+      max-file-size: 200Mb
+      max-request-size: 200Mb
 
 eureka:
   instance:
