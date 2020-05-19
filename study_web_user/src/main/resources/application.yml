@@ -33,6 +33,10 @@ feign:
   hystrix:
     enabled: false
 
+ribbon:
+  ReadTimeout:  5000
+  ConnectTimeout: 5000
+
 eureka:
   instance:
     prefer-ip-address: true
